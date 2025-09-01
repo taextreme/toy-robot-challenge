@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,6 +11,27 @@ public record Main(Robot robot, Table table) {
         Table table = new Table(5, 5);
         Robot robot = new Robot();
         Main app = new Main(robot, table);
+        app.start();
+    }
+
+    // Starts the application loop, reading and process input from the console.
+    public void start() {
+        System.out.println("--- Toy Robot Start! ---");
+        System.out.println("Valid commands are: PLACE X,Y,F | MOVE | LEFT | RIGHT | REPORT | EXIT");
+        System.out.println("The robot must be placed on the 5x5 table before any other command is accepted.");
+        System.out.println("---------------------------");
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (true) {
+                System.out.print("> ");
+                String input = scanner.nextLine().trim().toUpperCase();
+                if ("EXIT".equals(input)) {
+                    break;
+                }
+                processCommand(input);
+            }
+        }
+        System.out.println("Robot Shut Down. Goodbye!");
     }
 
     // Process Command String
