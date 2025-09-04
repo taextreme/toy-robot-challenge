@@ -13,8 +13,13 @@ public enum Direction {
         this.dy = dy;
     }
 
-    public int getDx() { return dx; }
-    public int getDy() { return dy; }
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
 
     // Returns the direction after a left turn.
     public Direction turnLeft() {
